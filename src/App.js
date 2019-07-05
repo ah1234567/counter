@@ -1,27 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a>
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
-        <h1>Hello</h1>
-        <br></br>
-      </header>
-    </div>
-  );
+class Counter extends Component {
+  constructor(){
+    super();
+    this.state = {
+      counter: 0,
+    }
+  }
+
+  increment = () => {
+  if(this.state.counter < 20){
+    this.setState ({
+      counter: this.state.counter + 1
+    })
+  }
 }
 
-export default App;
+
+  decrement = () => {
+    if(this.state.counter>0){
+      this.setState ({
+        counter: this.state.counter - 1   
+        
+      })
+    } 
+    
+  }
+
+
+clearout = () => {
+ 
+  this.setState ({
+    counter:0
+  })
+}
+
+
+
+
+
+  render(){
+    return(
+      <div className = "Container">
+      <div className = "navbar"> Counter.js</div>
+      <div className = "counter">
+      <h1>{this.state.counter}</h1>
+      <button type = "button" onClick={this.decrement}>Decrement</button>
+      <button type = "button" onClick={this.increment}>Increment</button>
+      <button type = "button" onClick={this.clearout}>clearout</button>
+      </div>
+      </div>
+    );
+  }
+}
+  export default Counter
